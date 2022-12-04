@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Csv;
 use App\Models\Framework;
 
-
-class UploadCsvController extends Controller
+class FrameworksController extends Controller
 {
+    // Upload frameworks from CSV
     public static function postFrameworksFromFile($csv)
     {
         $path = $csv->store('public/csvs');
@@ -45,5 +45,10 @@ class UploadCsvController extends Controller
             "message" => "File successfully uploaded",
             "file" => $name,
         ]);
+    }
+
+    public static function getFrameworks()
+    {
+        return Framework::all();
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UploadCsvController;
+use App\Http\Controllers\FrameworksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/csv', function (Request $request) {
-    return UploadCsvController::postFrameworksFromFile($request->file('csv'));
+    return FrameworksController::postFrameworksFromFile($request->file('csv'));
+});
+
+Route::get('/frameworks', function () {
+    return FrameworksController::getFrameworks();
 });
